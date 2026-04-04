@@ -5,17 +5,20 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-900 text-white p-4">
       <div className="flex gap-6 justify-center">
-        <Link to="/new" className="hover:text-blue-400">
-          New Cars
+        <Link to="/" className="hover:text-blue-400">
+          Home
         </Link>
-        <Link to="/used" className="hover:text-blue-400">
-          Used Cars
+        <Link to="/featured" className="hover:text-blue-400">
+          Featured
         </Link>
-        <Link to="/service" className="hover:text-blue-400">
-          Service
+        <Link to="/search" className="hover:text-blue-400">
+          Search
         </Link>
         <Link to="/about" className="hover:text-blue-400">
           About Us
+        </Link>
+        <Link to="/sell" className="hover:text-blue-400">
+          Upload Item
         </Link>
       </div>
     </nav>
