@@ -37,8 +37,29 @@ const cars = [
   }
 ];
 
+const users=[
+  {
+    id:1,
+    username:"obiwon",
+      image_url: "",
+
+  },
+  {
+    id:2,
+    username:"obiwon2",
+      image_url: "",
+
+  }
+];
+
 app.get("/api/listings", (req, res) => {
   res.json(cars);
+});
+app.get("/api/user", (req, res) => {
+  res.json(users[0]);
+});
+app.get("/api/users", (req, res) => {
+  res.json(users);
 });
 
 app.listen(PORT, () => {
