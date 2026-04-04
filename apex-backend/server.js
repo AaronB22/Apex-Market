@@ -13,7 +13,23 @@ app.use(express.json());
 const cars = [
   {
     id: 1,
-    name:"Test 1",
+    title:"Test 1",
+    owner:"Aaron",
+    price: 21999,
+    description: "Reliable midsize sedan",
+    image_url: "",
+  },
+  {
+    id: 2,
+    title:"Test 2",
+    owner:"Aaron",
+    price: 21999,
+    description: "Reliable midsize sedan",
+    image_url: "",
+  },
+  {
+    id: 3,
+    title:"Test 3",
     owner:"Aaron",
     price: 21999,
     description: "Reliable midsize sedan",

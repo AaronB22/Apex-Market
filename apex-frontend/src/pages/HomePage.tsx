@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CarCard from "../components/ListingsCard";
+import ListingCard from "../components/ListingsCard";
 import { getListings } from "../services/listingAPI";
 import type { Listing } from "../types/listing";
 
@@ -37,9 +37,9 @@ export default function HomePage() {
       <h1>Apex Cars</h1>
       <p>Browse available vehicles</p>
 
-      <section>
+      <section className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {listings.map((list) => (
-          <CarCard key={list.id} list={list} />
+          <ListingCard key={list.id} listing={list} />
         ))}
       </section>
     </main>

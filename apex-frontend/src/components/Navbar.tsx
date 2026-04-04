@@ -8,14 +8,11 @@ const Navbar = () => {
         <Link to="/" className="hover:text-blue-400">
           Home
         </Link>
-        <Link to="/featured" className="hover:text-blue-400">
-          Featured
+        <Link to="/messageBoard" className="hover:text-blue-400">
+          Message Board
         </Link>
-        <Link to="/search" className="hover:text-blue-400">
-          Search
-        </Link>
-        <Link to="/about" className="hover:text-blue-400">
-          About Us
+        <Link to="/profile" className="hover:text-blue-400">
+          Profile
         </Link>
         <Link to="/sell" className="hover:text-blue-400">
           Upload Item
