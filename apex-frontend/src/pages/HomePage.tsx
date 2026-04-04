@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react";
-import CarCard from "../components/CarCard";
-import { getCars } from "../services/carAPI";
-import type { Car } from "../types/car";
+import CarCard from "../components/ListingsCard";
+import { getListings } from "../services/listingAPI";
+import type { Listing } from "../types/listing";
 
 export default function HomePage() {
-  const [cars, setCars] = useState<Car[]>([]);
+  const [listings, setListings] = useState<Listing[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function loadCars() {
+    async function loadListings() {
       try {
-        const data = await getCars();
-        setCars(data);
+        const data = await getListings();
+        setListings(data);
       } catch (err) {
-        setError("Failed to load cars");
+        setError("Failed to load listing");
         console.error(err);
       } finally {
         setLoading(false);
       }
     }
 
-    loadCars();
+    loadListings();
   }, []);
 
   if (loading) {
-    return <main><p>Loading cars...</p></main>;
+    return <main><p>Loading listings...</p></main>;
   }
 
   if (error) {
@@ -38,8 +38,8 @@ export default function HomePage() {
       <p>Browse available vehicles</p>
 
       <section>
-        {cars.map((car) => (
-          <CarCard key={car.id} car={car} />
+        {listings.map((list) => (
+          <CarCard key={list.id} list={list} />
         ))}
       </section>
     </main>
