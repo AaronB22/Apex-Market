@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CarCard from "../components/CarCard";
-import { getCars } from "../services/carApi";
+import { getCars } from "../services/carAPI";
 import type { Car } from "../types/car";
 
 export default function HomePage() {
