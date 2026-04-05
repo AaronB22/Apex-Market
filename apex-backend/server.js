@@ -1,14 +1,24 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import mysql2 from "mysql2";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const pool= mysql2.createPool({
+  host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
+}).promise()
+
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 
 const cars = [
   {
@@ -57,7 +67,22 @@ const users=[
 
   }
 ];
-
+app.post("/api/signup",async(req,res)=>{
+    
+    const sql = `INSERT INTO users(username, email,location,age,bio,password)
+      VALUES (?,?,?,?,?,?)
+    `
+    const tuser=[
+      'test1',
+      "test@email",
+      "Seattle",
+      12,
+      "Hi I'm Bob!",
+      "password"
+    ]
+    const result= await pool.query(sql, tuser)
+    console.log(result)
+})
 app.get("/api/listings", (req, res) => {
   res.json(cars);
 });
