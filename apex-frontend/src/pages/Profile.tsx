@@ -34,17 +34,31 @@ const Profile = () => {
     }
     if(user!==null){
         return (
-            <div className="profile">
-                {user.profileimgurl ? (
-                    <img
-                        src={user.profileimgurl}
-                        className='profileImg'
-                    />
-                ) : (
-                    <div className='profileImg_placeholder'> No Image </div>
-                )}
-                <h1>{user.username}</h1>
-            </div>
+<div className="profile">
+  <div className="profileImgBody">
+    {user.profileimgurl ? (
+      <img
+        src={user.profileimgurl}
+        className="profileImg"
+        alt="Profile"
+      />
+    ) : (
+      <div className="profileImg_placeholder">No Image</div>
+    )}
+  </div>
+
+  <div className="profileBody">
+    <h1 className="profileName">{user.username}</h1>
+    <p className="profileMeta">{user.age}</p>
+    <p className="profileMeta">{user.location}</p>
+
+    <textarea
+      className="profileBio"
+      value={user.bio}
+      readOnly
+    />
+  </div>
+</div>
         )
 
     }

@@ -40,14 +40,20 @@ const cars = [
 const users=[
   {
     id:1,
-    username:"obiwon",
-      image_url: "",
+    username:"lukeskywakler",
+    location:"tatooine",
+    age:18,
+    bio:"I will be a jedi like my father",
+    image_url: "",
 
   },
   {
     id:2,
-    username:"obiwon2",
-      image_url: "",
+    username:"benkenobi",
+    location:"tatooine",
+    age:57,
+    description:"Must protect the choosen one",
+    image_url: "",
 
   }
 ];
