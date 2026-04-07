@@ -20,3 +20,6 @@ export async function getUser(): Promise<User> {
 
     return (await response.json()) as User;
 }
+export async function createUser(params:type) {
+    
+}

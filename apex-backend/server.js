@@ -84,6 +84,7 @@ app.post("/api/signup",async(req,res)=>{
     console.log(result)
 })
 app.get("/api/listings", (req, res) => {
+  console.log()
   res.json(cars);
 });
 app.get("/api/user", (req, res) => {
