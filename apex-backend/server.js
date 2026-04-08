@@ -67,6 +67,19 @@ const users=[
 
   }
 ];
+app.post("/api/create-user", async(req,res)=>{
+    console.log(req.body)
+    const newUser=[
+      req.body.username,
+      req.body.email,
+      req.body.password
+    ]
+    console.log(newUser)
+      const sql = `INSERT INTO users(username,email,password)
+      VALUES (?,?,?)`
+    const result= await pool.query(sql,newUser)
+    res.json(result)
+})
 app.post("/api/signup",async(req,res)=>{
     
     const sql = `INSERT INTO users(username, email,location,age,bio,password)
