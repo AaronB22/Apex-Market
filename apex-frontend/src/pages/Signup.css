@@ -60,3 +60,16 @@
 .signUpButton:hover {
   background: #1d4ed8;
 }
+
+.formError {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #dc2626;
+  text-align: center;
+}
+
+.inputError {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #dc2626;
+}

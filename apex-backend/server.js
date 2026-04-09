@@ -68,34 +68,22 @@ const users=[
   }
 ];
 app.post("/api/create-user", async(req,res)=>{
-    console.log(req.body)
     const newUser=[
       req.body.username,
       req.body.email,
       req.body.password
     ]
-    console.log(newUser)
       const sql = `INSERT INTO users(username,email,password)
       VALUES (?,?,?)`
     const result= await pool.query(sql,newUser)
-    res.json(result)
+
+    res.status(200).json({
+      username:req.body.username,
+      email:req.body.email
+    }
+    )
 })
-app.post("/api/signup",async(req,res)=>{
-    
-    const sql = `INSERT INTO users(username, email,location,age,bio,password)
-      VALUES (?,?,?,?,?,?)
-    `
-    const tuser=[
-      'test1',
-      "test@email",
-      "Seattle",
-      12,
-      "Hi I'm Bob!",
-      "password"
-    ]
-    const result= await pool.query(sql, tuser)
-    console.log(result)
-})
+
 app.get("/api/listings", (req, res) => {
   console.log()
   res.json(cars);
