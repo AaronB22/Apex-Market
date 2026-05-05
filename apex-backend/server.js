@@ -3,12 +3,14 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mysql2 from "mysql2";
 
+import {router as userRouter} from './src/routers/user.router.js';
+
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const pool= mysql2.createPool({
+export const pool= mysql2.createPool({
   host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -67,22 +69,23 @@ const users=[
 
   }
 ];
-app.post("/api/create-user", async(req,res)=>{
-    const newUser=[
-      req.body.username,
-      req.body.email,
-      req.body.password
-    ]
-      const sql = `INSERT INTO users(username,email,password)
-      VALUES (?,?,?)`
-    const result= await pool.query(sql,newUser)
+// app.post("/api/create-user", async(req,res)=>{
+//     const newUser=[
+//       req.body.username,
+//       req.body.email,
+//       req.body.password
+//     ]
+//       const sql = `INSERT INTO users(username,email,password)
+//       VALUES (?,?,?)`
+//     const result= await pool.query(sql,newUser)
 
-    res.status(200).json({
-      username:req.body.username,
-      email:req.body.email
-    }
-    )
-})
+//     res.status(200).json({
+//       username:req.body.username,
+//       email:req.body.email
+//     }
+//     )
+// })
+app.use("/api/user", userRouter);
 
 app.get("/api/listings", (req, res) => {
   console.log()
