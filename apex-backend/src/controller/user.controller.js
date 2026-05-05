@@ -1,6 +1,6 @@
-import { PoolConnection as pool } from "mysql2"
+import pool from "../db.js"
 
-export const createUser=(req, res)=>{
+export const createUser=async(req, res)=>{
     const newUser=[
       req.body.username,
       req.body.email,

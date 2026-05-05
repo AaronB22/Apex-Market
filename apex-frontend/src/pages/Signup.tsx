@@ -31,7 +31,7 @@ export default function Signup() {
         }
     }
     const uploadUser = async () => {
-        const result = await fetch("http://localhost:3000/api/create-user", {
+        const result = await fetch("http://localhost:3000/api/user/create-user", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
