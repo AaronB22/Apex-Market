@@ -20,6 +20,7 @@ const Signin = () => {
             headers: {
                 "Content-Type": "application/json",
             },
+            credentials: "include",
             body: JSON.stringify({
                 email: email,
                 password: password

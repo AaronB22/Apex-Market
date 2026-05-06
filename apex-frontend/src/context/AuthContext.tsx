@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import type { User } from "../types/user";
 
 type AuthContextType = {
@@ -17,14 +17,23 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
 
-  const login = (userData:User) => {
-    localStorage.setItem("user", JSON.stringify(userData))
-    setUser(userData)
+  useEffect(() => {
+    fetch("http://localhost:3000/api/user/me", { credentials: "include" })
+      .then(res => res.ok ? res.json() : null)
+      .then(data => { if (data) setUser(data); })
+      .catch(() => {});
+  }, []);
+
+  const login = (userData: User) => {
+    setUser(userData);
   }
 
-  const logout = () => {
-    localStorage.removeItem("user")
-    setUser(null)
+  const logout = async () => {
+    await fetch("http://localhost:3000/api/user/sign-out", {
+      method: "POST",
+      credentials: "include",
+    });
+    setUser(null);
   }
 
   return (
