@@ -15,18 +15,15 @@ const Navbar = () => {
         <Link to="/messageBoard" className="hover:text-blue-400">
           Message Board
         </Link>
-        <Link to="/profile" className="hover:text-blue-400">
-          Profile
-        </Link>
         <Link to="/upload" className="hover:text-blue-400">
           Upload Item
         </Link>
         {!user ? (
-          <Link to="/signup" className="hover:text-blue-400">
-            Sign Up
+          <Link to="/signin" className="hover:text-blue-400">
+            Sign In
           </Link>
         ) : (
-          <Link to="/signup" className="hover:text-blue-400">
+          <Link to="/profile" className="hover:text-blue-400">
             {user.username}
           </Link>
         )}

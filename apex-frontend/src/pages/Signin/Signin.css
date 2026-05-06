@@ -1,0 +1,54 @@
+.signInBody {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.signInTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #111827;
+}
+
+.signInButton {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.6rem;
+
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.signInButton:hover {
+  background: #1d4ed8;
+}
+
+.signInFooter {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.signInFooter a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signInFooter a:hover {
+  text-decoration: underline;
+}

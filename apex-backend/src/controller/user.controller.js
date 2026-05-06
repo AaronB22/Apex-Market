@@ -11,3 +11,20 @@ export const createUser = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 }
+export const signInUser= async(req,res)=>{
+    try{
+        const sql= `Select username,email FROM users WHERE email= ? AND password= ?`
+       const [rows]= await pool.query(sql,[req.body.email, req.body.password])
+       console.log(rows.length)
+        if(rows.length==0){
+            res.status(404).json({message:"email or password incorrect"})
+        }
+        else{
+            res.status(202).json(rows[0])
+        }
+    }
+    catch (err) {
+        console.error("Sign In error:", err.message);
+        res.status(500).json({ error: err.message });
+    }
+}
