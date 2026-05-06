@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import ListingCard from "../components/ListingsCard";
-import { getListings } from "../services/listingAPI";
-import type { Listing } from "../types/listing";
+import ListingCard from "../../components/ListingsCard";
+import { getListings } from "../../services/listingAPI";
+import type { Listing } from "../../types/listing";
 
 export default function HomePage() {
   const [listings, setListings] = useState<Listing[]>([]);

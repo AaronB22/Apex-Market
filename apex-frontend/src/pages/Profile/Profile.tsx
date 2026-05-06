@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { User } from '../types/user';
-import { getUser } from '../services/userAPI';
+import type { User } from '../../types/user';
+import { getUser } from '../../services/userAPI';
 import './Profile.css';
 
 const Profile = () => {
@@ -12,7 +12,7 @@ const Profile = () => {
             try {
                 const data = await getUser();
                 setUser(data)
-               
+
 
             }
             catch (err) {
@@ -28,7 +28,7 @@ const Profile = () => {
     if (loading) {
         return <main><p>Loading profile...</p></main>;
     }
-    
+
     if (error && user===null) {
         return <main><p>{error}</p></main>;
     }

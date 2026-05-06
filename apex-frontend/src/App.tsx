@@ -1,9 +1,9 @@
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import { Routes, Route } from "react-router-dom";
-import Profile from "./pages/Profile";
-import Signup from "./pages/Signup";
-import Upload from "./pages/Upload";
+import Profile from "./pages/Profile/Profile";
+import Signup from "./pages/Signup/Signup";
+import Upload from "./pages/Upload/Upload";
 
 function App() {
   return (
