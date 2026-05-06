@@ -1,0 +1,113 @@
+.upload-page {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 24px 28px;
+  background: #f5f5f5;
+  border-radius: 12px;
+}
+
+.upload-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #111;
+}
+
+.upload-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Image upload */
+.upload-image-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.image-drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.image-drop-zone:hover {
+  border-color: #555;
+  background: #f1f1f1;
+}
+
+.image-drop-icon {
+  font-size: 2.5rem;
+}
+
+.image-drop-text {
+  font-size: 0.95rem;
+  color: #777;
+}
+
+/* Fields */
+.upload-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.field-group input,
+.field-group textarea {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fff;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+  outline: none;
+  border-color: #555;
+}
+
+/* Submit */
+.upload-submit {
+  margin-top: 8px;
+  padding: 12px;
+  background: #111;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.upload-submit:hover {
+  background: #333;
+}

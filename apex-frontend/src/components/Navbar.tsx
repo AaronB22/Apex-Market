@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link to="/profile" className="hover:text-blue-400">
           Profile
         </Link>
-        <Link to="/sell" className="hover:text-blue-400">
+        <Link to="/upload" className="hover:text-blue-400">
           Upload Item
         </Link>
         {!user ? (
