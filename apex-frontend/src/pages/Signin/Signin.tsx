@@ -10,7 +10,7 @@ const Signin = () => {
     const [emailError] = useState('');
     const [passwordError] = useState('');
 
-    const { user, setUser } = useAuth();
+    const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSignIn = async (e: { preventDefault: () => void }) => {
@@ -26,7 +26,7 @@ const Signin = () => {
             })
         })
         const data = await result.json()
-        setUser(data);
+        login(data);
         navigate('/')
 
     }
