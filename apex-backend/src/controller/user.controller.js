@@ -63,3 +63,18 @@ export const signOutUser = (req, res) => {
     res.clearCookie("token", COOKIE_OPTS);
     res.status(200).json({ message: "Signed out" });
 }
+
+export const updateUser=(req,res)=>{
+    const token= req.cookies?.token;
+    if(!token) return res.status(401).json({message: "Not authenticated"});
+    let payload;
+    try{
+        payload= jwt.verify(token, process.env.JWT_SECRET)
+    }catch{
+         return res.status(401).json({message: "Invalid Token"});
+    }
+    const {age,location,bio}= res.body;
+    const sql= `UPDATE user SET age =?, location=?,bio=?`;
+    await pool.query(sql, [age,location,bio])
+    res.status(200).json({message: "updated"})
+}
