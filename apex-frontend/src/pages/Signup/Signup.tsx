@@ -11,7 +11,7 @@ export default function Signup() {
     const [conPassword, setConPassword] = useState('');
     const { user, setUser } = useAuth();
 
-    //error states
+
     const [usernameError, setUsernameError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
@@ -27,6 +27,7 @@ export default function Signup() {
 
         }
         else {
+            //TODO: add failure logic
             console.log(false)
         }
     }
