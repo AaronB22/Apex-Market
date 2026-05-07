@@ -5,7 +5,6 @@ import { useAuth } from '../context/AuthContext'
 const Navbar = () => {
   const { user, setUser } = useAuth();
 
-  console.log(user?.username)
   return (
     <nav className="bg-gray-900 text-white p-4">
       <div className="flex gap-6 justify-center">

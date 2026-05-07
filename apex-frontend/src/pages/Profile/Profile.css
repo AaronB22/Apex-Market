@@ -1,5 +1,6 @@
 .profile {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   align-items: flex-start;
 
@@ -68,4 +69,52 @@
 
   resize: none;
   background: #f9fafb;
+}
+
+.profileMeta span[contenteditable="true"] {
+  display: inline-block;
+  /* border-bottom: 2px solid #2563eb; */
+  padding: 0 4px;
+  border-radius: 4px 4px 0 0;
+  background: #eff6ff;
+  color: #1e40af;
+  outline: none;
+  width: 100px;
+  cursor: text;
+}
+
+.profileBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.profileBtns button:first-child {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.profileBtns button:first-child:hover {
+  background: #1d4ed8;
+}
+
+.profileBtns button:last-child {
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.profileBtns button:last-child:hover {
+  background: #b91c1c;
 }

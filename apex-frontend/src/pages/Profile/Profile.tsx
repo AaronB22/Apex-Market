@@ -1,30 +1,22 @@
 import { useEffect, useState } from 'react';
-import type { User } from '../../types/user';
-import { getUser } from '../../services/userAPI';
+import { useAuth } from '../../context/AuthContext'
 import './Profile.css';
+import { redirect } from 'react-router-dom';
 
 const Profile = () => {
     const [error, setError] = useState("");
-    const [user, setUser] = useState<User | null>(null);
+    const [edit, setEdit]= useState(false)
     const [loading, setLoading] = useState(true);
+    const { user, setUser } = useAuth();
+    const {logout}=useAuth();
     useEffect(() => {
-        async function loadUser() {
-            try {
-                const data = await getUser();
-                setUser(data)
-
-
-            }
-            catch (err) {
-                setError("Failed to load user");
-                console.error(err);
-            }
-            finally {
-                setLoading(false)
-            }
-        }
-        loadUser()
-    }, [])
+      if(!user){
+        redirect('/signin')
+      }
+      else{
+        setLoading(false)
+      }
+    }, [user])
     if (loading) {
         return <main><p>Loading profile...</p></main>;
     }
@@ -32,7 +24,20 @@ const Profile = () => {
     if (error && user===null) {
         return <main><p>{error}</p></main>;
     }
-    if(user!==null){
+
+
+    const changeEditMode=()=>{
+      if(edit){
+        setEdit(false);
+      }
+      else{
+        setEdit(true);
+      }
+    }
+
+
+
+  if(user!==null){
         return (
 <div className="profile">
   <div className="profileImgBody">
@@ -49,19 +54,32 @@ const Profile = () => {
 
   <div className="profileBody">
     <h1 className="profileName">{user.username}</h1>
-    <p className="profileMeta">{user.age}</p>
-    <p className="profileMeta">{user.location}</p>
+    <p className="profileMeta">Age: <span contentEditable={edit}>{user.age}</span></p>
+    <p className="profileMeta" >Location: <span contentEditable={edit}>{user.location}</span></p>
 
-    <textarea
+    {!edit ? (
+      <textarea
+        className="profileBio"
+        value={user.bio}
+        readOnly
+      />
+    ):(
+      <textarea
       className="profileBio"
       value={user.bio}
-      readOnly
     />
+    )
+    }
+  </div>
+  <div className='profileBtns'>
+    <button onClick={changeEditMode}>{edit ?(<span>Save</span>):(<span>Edit</span>)}</button>
+    <button onClick={logout}>Signout</button>
   </div>
 </div>
         )
 
     }
+    
 }
 
 export default Profile
