@@ -45,13 +45,11 @@ const Profile = () => {
 
       })
       const data= await result.json()
-      console.log(data)
     }
     else {
       setEdit(true);
     }
   }
-
 
 
   if (user !== null) {

@@ -37,8 +37,8 @@ export const signInUser = async (req, res) => {
             return res.status(401).json({ message: "Email or password incorrect" });
         }
 
-        const { username, email } = rows[0];
-        const token = signToken({ username, email });
+        const { username, email,age,location,bio } = rows[0];
+        const token = signToken({ username, email,age,location,bio });
         res.cookie("token", token, COOKIE_OPTS);
         res.status(200).json({ username, email });
     } catch (err) {
@@ -47,13 +47,15 @@ export const signInUser = async (req, res) => {
     }
 }
 
-export const getMe = (req, res) => {
+export const getMe = async (req, res) => {
     const token = req.cookies?.token;
     if (!token) return res.status(401).json({ message: "Not authenticated" });
 
     try {
         const payload = jwt.verify(token, process.env.JWT_SECRET);
-        res.status(200).json({ username: payload.username, email: payload.email });
+        const [rows] = await pool.query(`SELECT username, email, age, location, bio FROM users WHERE username = ?`, [payload.username]);
+        if (rows.length === 0) return res.status(404).json({ message: "User not found" });
+        res.status(200).json(rows[0]);
     } catch {
         res.status(401).json({ message: "Invalid or expired token" });
     }
@@ -76,5 +78,7 @@ export const updateUser=async(req,res)=>{
     const {age,location,bio, username}= req.body;
     const sql= `UPDATE users SET age =?, location=?,bio=? WHERE username=?`;
     await pool.query(sql, [age,location,bio,username])
+    const newToken = signToken({ username: payload.username, email: payload.email, age, location, bio });
+    res.cookie("token", newToken, COOKIE_OPTS);
     res.status(200).json({message: "updated"})
 }
