@@ -64,7 +64,7 @@ export const signOutUser = (req, res) => {
     res.status(200).json({ message: "Signed out" });
 }
 
-export const updateUser=(req,res)=>{
+export const updateUser=async(req,res)=>{
     const token= req.cookies?.token;
     if(!token) return res.status(401).json({message: "Not authenticated"});
     let payload;
@@ -73,8 +73,8 @@ export const updateUser=(req,res)=>{
     }catch{
          return res.status(401).json({message: "Invalid Token"});
     }
-    const {age,location,bio}= res.body;
-    const sql= `UPDATE user SET age =?, location=?,bio=?`;
-    await pool.query(sql, [age,location,bio])
+    const {age,location,bio, username}= req.body;
+    const sql= `UPDATE users SET age =?, location=?,bio=? WHERE username=?`;
+    await pool.query(sql, [age,location,bio,username])
     res.status(200).json({message: "updated"})
 }

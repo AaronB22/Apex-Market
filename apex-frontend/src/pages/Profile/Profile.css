@@ -71,16 +71,27 @@
   background: #f9fafb;
 }
 
-.profileMeta span[contenteditable="true"] {
-  display: inline-block;
-  /* border-bottom: 2px solid #2563eb; */
-  padding: 0 4px;
-  border-radius: 4px 4px 0 0;
+.profileMeta input {
+  border: none;
+  border-bottom: 2px solid #2563eb;
   background: #eff6ff;
   color: #1e40af;
+  font-size: 0.9rem;
+  padding: 2px 4px;
+  border-radius: 4px 4px 0 0;
   outline: none;
-  width: 100px;
+  width: 140px;
   cursor: text;
+}
+
+.profileMeta input:focus {
+  background: #dbeafe;
+}
+
+.profileBio.editable {
+  border: 2px solid #2563eb;
+  background: #eff6ff;
+  color: #1e40af;
 }
 
 .profileBtns {
