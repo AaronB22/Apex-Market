@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ListingCard from "../../components/ListingsCard";
-import { getListings } from "../../services/listingAPI";
+import { getAllListings } from "../../services/listingAPI";
 import type { Listing } from "../../types/listing";
 
 export default function HomePage() {
@@ -11,7 +11,7 @@ export default function HomePage() {
   useEffect(() => {
     async function loadListings() {
       try {
-        const data = await getListings();
+        const data = await getAllListings();
         setListings(data);
       } catch (err) {
         setError("Failed to load listing");
